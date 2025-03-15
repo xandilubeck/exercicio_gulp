@@ -3,6 +3,12 @@ const sass = require('gulp-sass')(require('sass'));
 const uglify = require('gulp-uglify');
 const imagemin = require('gulp-imagemin');
 
+function compilaSass() {
+    return gulp.src('./styles/*.scss')
+    .pipe(sass())
+    .pipe(gulp.dest('./build/styles'));
+}
+
 function comprimeImagens() {
     return gulp.src('./images/*')
     .pipe(imagemin())
@@ -15,5 +21,6 @@ function comprimeJavaScript() {
     .pipe(gulp.dest('./build/scripts'));
 }
 
+exports.sass = compilaSass;
 exports.images = comprimeImagens;
 exports.javascripts = comprimeJavaScript;
